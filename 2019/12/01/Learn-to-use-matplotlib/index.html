@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="python,matplotlib,">
 
 
 
@@ -79,15 +79,20 @@
 
 
 
-<meta name="keywords" content="深度学习">
-<meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="为了帮助花语快速掌握matplotlib的使用方法，下面用个小demo来演示： 12345678910111213141516import matplotlib.pyplot as pltimport numpy as npimport math%matplotlib inline t = np.linspace(0, math.pi, 1000)x = np.sin(t)y = np.cos(t">
+<meta name="keywords" content="python,matplotlib">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learn to use matplotlib">
+<meta property="og:url" content="http://yoursite.com/2019/12/01/Learn-to-use-matplotlib/index.html">
 <meta property="og:site_name" content="Rookie Blogs">
+<meta property="og:description" content="为了帮助花语快速掌握matplotlib的使用方法，下面用个小demo来演示： 12345678910111213141516import matplotlib.pyplot as pltimport numpy as npimport math%matplotlib inline t = np.linspace(0, math.pi, 1000)x = np.sin(t)y = np.cos(t">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-04T09:37:15.761Z">
+<meta property="og:image" content="http://yoursite.com/images/draw_heart.png">
+<meta property="og:updated_time" content="2019-12-01T13:40:54.093Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="标签">
+<meta name="twitter:title" content="Learn to use matplotlib">
+<meta name="twitter:description" content="为了帮助花语快速掌握matplotlib的使用方法，下面用个小demo来演示： 12345678910111213141516import matplotlib.pyplot as pltimport numpy as npimport math%matplotlib inline t = np.linspace(0, math.pi, 1000)x = np.sin(t)y = np.cos(t">
+<meta name="twitter:image" content="http://yoursite.com/images/draw_heart.png">
 
 
 
@@ -117,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/01/Learn-to-use-matplotlib/">
 
 
 
 
 
-  <title>标签 | Rookie Blogs</title>
+  <title>Learn to use matplotlib | Rookie Blogs</title>
   
 
 
@@ -238,40 +243,179 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/01/Learn-to-use-matplotlib/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Paul JI">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/banzhuan.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rookie Blogs">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">标签</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                6 tags in total
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/hexo/" style="font-size: 12px; color: #ccc">hexo</a> <a href="/tags/markdown/" style="font-size: 12px; color: #ccc">markdown</a> <a href="/tags/matplotlib/" style="font-size: 12px; color: #ccc">matplotlib</a> <a href="/tags/nlp/" style="font-size: 12px; color: #ccc">nlp</a> <a href="/tags/python/" style="font-size: 12px; color: #ccc">python</a> <a href="/tags/预训练/" style="font-size: 12px; color: #ccc">预训练</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">Learn to use matplotlib</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-01T21:07:03+08:00">
+                2019-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Python</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>为了帮助花语快速掌握matplotlib的使用方法，下面用个小demo来演示：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">%matplotlib inline</span><br><span class="line"> </span><br><span class="line">t = np.linspace(<span class="number">0</span>, math.pi, <span class="number">1000</span>)</span><br><span class="line">x = np.sin(t)</span><br><span class="line">y = np.cos(t) + np.power(x, <span class="number">2.0</span> / <span class="number">3</span>)</span><br><span class="line">plt.plot(x, y, color=<span class="string">'red'</span>, linewidth=<span class="number">2</span>, label=<span class="string">'love chy1'</span>)</span><br><span class="line">plt.plot(-x, y, color=<span class="string">'red'</span>, linewidth=<span class="number">2</span>, linestyle=<span class="string">"--"</span>, label=<span class="string">'love chy2'</span>)</span><br><span class="line">plt.text(<span class="number">-0.25</span>, <span class="number">0.5</span>, <span class="string">"chy is cute~"</span>, fontsize=<span class="number">12</span>)</span><br><span class="line">plt.title(<span class="string">"Learn to use matplotlib"</span>)</span><br><span class="line">plt.ylim(<span class="number">-1.2</span>, <span class="number">1.8</span>)</span><br><span class="line">plt.xlim(<span class="number">-1.5</span>, <span class="number">1.5</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'lower right'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+<p>前面三句<code>import</code>没的说啦，就是为了载入绘图所用的包。<br><code>%matplotlib inline</code>这一句加上呢，是为了能在jupyter的环境下将图片可视化，否则只是显示有个图像句柄对象。<br>x，y是一一相对的列表，相当于函数定义域到值域的映射，<code>np.linspace(0, math.pi, 1000)</code>表示在0到pi之间均匀的生成1000个点。</p>
+<p>绘图部分，<code>plt.plot</code>函数用来绘制曲线，其中参数最主要的就是曲线(x,y)坐标列表。<code>color</code>用来指定颜色，<code>linewidth</code>用来指定绘制的线条宽度，<code>label</code>用来给曲线命名，由于绘制的曲线可能不止一条，可以用其区分，<code>linestyle</code>用来指定线型，默认是实线。</p>
+<p><code>plt.text</code>用来在指定坐标处添加文字，颜色以及大小都可选。</p>
+<p><code>plt.title</code>用来添加图片标题~</p>
+<p><code>plt.ylim</code>以及<code>plt.xlim</code>是用来限制展示的图像坐标轴范围，控制好范围能让图片展示更好看。</p>
+<p><code>plt.legend</code>就是用来加多条曲线的解释，具体解释会引用<code>plt.plot</code>中的label。</p>
+<p>学会了吗？</p>
+<p>效果图：</p>
+<p><img src="/images/draw_heart.png" alt="draw_heart" title="绘制效果"></p>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"># python</a>
+          
+            <a href="/tags/matplotlib/" rel="tag"># matplotlib</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/07/三大特征抽取器的对比/" rel="next" title="三大特征抽取器的对比">
+                <i class="fa fa-chevron-left"></i> 三大特征抽取器的对比
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
