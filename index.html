@@ -253,6 +253,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/08/时序分析预测-1-介绍/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Paul JI">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/banzhuan.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Rookie Blogs">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/08/时序分析预测-1-介绍/" itemprop="url">时序分析预测(1)--介绍</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-08T19:43:13+08:00">
+                2019-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/time-series/" itemprop="url" rel="index">
+                    <span itemprop="name">time series</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+<p>原本以为Time Series是个小问题，一个ARIMA就能搞定，就大概看些资料准备开始动手了。然而😂…现实是，越看越懵逼，单位根过程是啥？STL分解是啥？ARCH效应检验又是什么？自己还是too young，所以还是先找点资料看看，分几个章节边学边写，毕竟花语不好糊弄呢。</p>
+<h1 id="一、什么是时序分析？"><a href="#一、什么是时序分析？" class="headerlink" title="一、什么是时序分析？"></a>一、什么是时序分析？</h1><p>所谓时间序列，就是一系列随着时间而变化的观察值。很多金融数据都是时间序列数据，比如每日股价波动、每月销售结果、年度利润等。时间序列分析就是观察历史数据预测未来的值。这里需要强调一点的是，时间序列分析并不是关于时间的回归，主要是研究自身的变化规律。</p>
+<h2 id="1-1-定量预测的条件"><a href="#1-1-定量预测的条件" class="headerlink" title="1.1 定量预测的条件"></a>1.1 定量预测的条件</h2><ul>
+<li>关于过去的数字化信息是可以用的；</li>
+<li>有理由假设过去的一些模式会在未来延续下去<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。</li>
+</ul>
+<h2 id="1-2-时序分析模型与解释模型的区别"><a href="#1-2-时序分析模型与解释模型的区别" class="headerlink" title="1.2 时序分析模型与解释模型的区别"></a>1.2 时序分析模型与解释模型的区别</h2><p>假设我们想要预测某地区一套公寓的价格。可以用如下包含预测变量的模型：<br>$$HP = f(位置, 朝向, 面积, 户型, 楼层, 误差)$$<br>这类模型不一定准确，因为其中的变量并不一定就是决定房价的真实因素。其中“误差”项表示随机波动和没有被包括在模型中的相关变量的影响。该模型即是“解释模型”，因为它能帮助解释房价变化的原因。</p>
+<p>由于房屋成交数据也一组时间序列数据，不同时段有不同的成交价，因此也可以用一个时间序列模型来进行预测。在这种情况下，可以用如下模型：<br>$$HP_{t+1} = f(HP_{t}, HP_{t-1}, HP_{t-2}, HP_{t-3}, …, 误差)$$<br>其中$t$表示当前的时间，$t+1$表示下一时段，$t-1$表示前一时段，以此类推。这个模型中，对未来的预测是基于过去的成交价，而不是基于可能影响房价的外部变量。同样，“误差”项允许随机波动和不包含在模型中的相关变量的影响。</p>
+<p>将这两种模型合并就是一个新的混合模型，叫做“动态回归模型”，结合了以上两种模型的特点：<br>$$HP_{t+1} = f(HP_{t}, 位置, 朝向, 面积, 户型, 楼层, 误差)$$</p>
+<p>解释模型非常有用,因为它包含了有关其他变量的信息,而不仅仅是要预测的变量的历史值。但是, 预测者可能选择时间序列模型而不是解释性或混合模型的原因有多种。首先,这一系统可能不被理解，因为特征选择通常具有主观性。其次,很难衡量各种预测因子的未来价值。第三, 有时只是关注预测会发生什么,而不关心为什么会发生。最后,时间序列模型预测更准确。</p>
+<p>在预测中模型的选择取决于可用的资源和数据、模型的准确性以及预测模型的使用方式<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。</p>
+<h1 id="二、时间序列的类别"><a href="#二、时间序列的类别" class="headerlink" title="二、时间序列的类别"></a>二、时间序列的类别</h1><h2 id="2-1-平稳序列"><a href="#2-1-平稳序列" class="headerlink" title="2.1 平稳序列"></a>2.1 平稳序列</h2><h3 id="2-1-1-强平稳序列"><a href="#2-1-1-强平稳序列" class="headerlink" title="2.1.1 强平稳序列"></a>2.1.1 强平稳序列</h3><h3 id="2-1-2-弱平稳序列"><a href="#2-1-2-弱平稳序列" class="headerlink" title="2.1.2 弱平稳序列"></a>2.1.2 弱平稳序列</h3><h2 id="2-2-非平稳序列"><a href="#2-2-非平稳序列" class="headerlink" title="2.2 非平稳序列"></a>2.2 非平稳序列</h2><h1 id="三、时序数据的获取"><a href="#三、时序数据的获取" class="headerlink" title="三、时序数据的获取"></a>三、时序数据的获取</h1><h2 id="3-1-航空公司乘客数据"><a href="#3-1-航空公司乘客数据" class="headerlink" title="3.1 航空公司乘客数据"></a>3.1 航空公司乘客数据</h2><p>航空乘客数据是典型的具有趋势性和季节性的数据，<a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/02/AirPassengers.csv" target="_blank" rel="noopener">下载地址</a>。</p>
+<h2 id="3-2-股票数据获取"><a href="#3-2-股票数据获取" class="headerlink" title="3.2 股票数据获取"></a>3.2 股票数据获取</h2><p>股票数据主要基于tushare库<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，股票交易数据获取方式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tushare <span class="keyword">as</span> ts</span><br><span class="line"></span><br><span class="line">pro = ts.pro_api(token) <span class="comment">#token请找小季获取</span></span><br><span class="line">pangan_stock = pro.daily(ts_code=<span class="string">'000001.SZ'</span>, start_date=<span class="string">'20190106'</span>, end_date=<span class="string">'20190822'</span>)</span><br><span class="line">print(pangan_stock.head(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+
+<p>其中<code>ts_code</code>就是关心的股票代码，<code>start_date</code>对应股票交易时间序列的开始时间，<code>end_date</code>对应结束时间。</p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">https://otexts.com/fppcn/data-methods.html</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;">https://tushare.pro/document/2?doc_id=27</span><a href="#fnref:2" rev="footnote"> ↩</a></li></ol></div></div>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/01/Learn-to-use-matplotlib/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1057,7 +1215,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -1068,7 +1226,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -1079,7 +1237,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
