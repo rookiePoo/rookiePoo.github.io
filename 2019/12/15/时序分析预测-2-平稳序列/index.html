@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="python,matplotlib,">
+  <meta name="keywords" content="time series,python,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="为了帮助花语快速掌握matplotlib的使用方法，下面用个小demo来演示： 12345678910111213141516import matplotlib.pyplot as pltimport numpy as npimport math%matplotlib inline t = np.linspace(0, math.pi, 1000)x = np.sin(t)y = np.cos(t">
-<meta name="keywords" content="python,matplotlib">
+<meta name="description" content="DRAFTDRAFT时间序列的类别平稳是处理时间序列数据时遇到的最重要的概念之一，平稳的时间序列的性质不随观测时间的变化而变化。平稳性可以说是时间序列分析的基础。平稳的通俗理解就是时间序列的一些行为不随时间改变， 所谓平稳过程就是其统计特性不随时间的平移而变化的过程。 ——即时间序列内含的规律和逻辑，要在被预测的未来时间段内能够延续下去。这样我们才能用历史信息去预测未来信息，类似机器学习中的训练集">
+<meta name="keywords" content="time series,python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Learn to use matplotlib">
-<meta property="og:url" content="http://yoursite.com/2019/12/01/Learn-to-use-matplotlib/index.html">
+<meta property="og:title" content="时序分析预测(2)--平稳序列">
+<meta property="og:url" content="http://yoursite.com/2019/12/15/时序分析预测-2-平稳序列/index.html">
 <meta property="og:site_name" content="Rookie Blogs">
-<meta property="og:description" content="为了帮助花语快速掌握matplotlib的使用方法，下面用个小demo来演示： 12345678910111213141516import matplotlib.pyplot as pltimport numpy as npimport math%matplotlib inline t = np.linspace(0, math.pi, 1000)x = np.sin(t)y = np.cos(t">
+<meta property="og:description" content="DRAFTDRAFT时间序列的类别平稳是处理时间序列数据时遇到的最重要的概念之一，平稳的时间序列的性质不随观测时间的变化而变化。平稳性可以说是时间序列分析的基础。平稳的通俗理解就是时间序列的一些行为不随时间改变， 所谓平稳过程就是其统计特性不随时间的平移而变化的过程。 ——即时间序列内含的规律和逻辑，要在被预测的未来时间段内能够延续下去。这样我们才能用历史信息去预测未来信息，类似机器学习中的训练集">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/draw_heart.png">
-<meta property="og:updated_time" content="2019-12-01T13:40:54.093Z">
+<meta property="og:updated_time" content="2019-12-20T01:52:32.079Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Learn to use matplotlib">
-<meta name="twitter:description" content="为了帮助花语快速掌握matplotlib的使用方法，下面用个小demo来演示： 12345678910111213141516import matplotlib.pyplot as pltimport numpy as npimport math%matplotlib inline t = np.linspace(0, math.pi, 1000)x = np.sin(t)y = np.cos(t">
-<meta name="twitter:image" content="http://yoursite.com/images/draw_heart.png">
+<meta name="twitter:title" content="时序分析预测(2)--平稳序列">
+<meta name="twitter:description" content="DRAFTDRAFT时间序列的类别平稳是处理时间序列数据时遇到的最重要的概念之一，平稳的时间序列的性质不随观测时间的变化而变化。平稳性可以说是时间序列分析的基础。平稳的通俗理解就是时间序列的一些行为不随时间改变， 所谓平稳过程就是其统计特性不随时间的平移而变化的过程。 ——即时间序列内含的规律和逻辑，要在被预测的未来时间段内能够延续下去。这样我们才能用历史信息去预测未来信息，类似机器学习中的训练集">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/12/01/Learn-to-use-matplotlib/">
+  <link rel="canonical" href="http://yoursite.com/2019/12/15/时序分析预测-2-平稳序列/">
 
 
 
 
 
-  <title>Learn to use matplotlib | Rookie Blogs</title>
+  <title>时序分析预测(2)--平稳序列 | Rookie Blogs</title>
   
 
 
@@ -255,7 +253,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/01/Learn-to-use-matplotlib/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/15/时序分析预测-2-平稳序列/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Paul JI">
@@ -272,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Learn to use matplotlib</h1>
+          <h1 class="post-title" itemprop="name headline">时序分析预测(2)--平稳序列</h1>
         
 
         <div class="post-meta">
@@ -284,8 +282,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-01T21:07:03+08:00">
-                2019-12-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-15T22:36:30+08:00">
+                2019-12-15
               </time>
             
 
@@ -307,8 +305,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
+                  <a href="/categories/time-series/" itemprop="url" rel="index">
+                    <span itemprop="name">time series</span>
                   </a>
                 </span>
 
@@ -344,19 +342,15 @@
       
 
       
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><p>为了帮助花语快速掌握matplotlib的使用方法，下面用个小demo来演示：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">%matplotlib inline</span><br><span class="line"> </span><br><span class="line">t = np.linspace(<span class="number">0</span>, math.pi, <span class="number">1000</span>)</span><br><span class="line">x = np.sin(t)</span><br><span class="line">y = np.cos(t) + np.power(x, <span class="number">2.0</span> / <span class="number">3</span>)</span><br><span class="line">plt.plot(x, y, color=<span class="string">'red'</span>, linewidth=<span class="number">2</span>, label=<span class="string">'love chy1'</span>)</span><br><span class="line">plt.plot(-x, y, color=<span class="string">'red'</span>, linewidth=<span class="number">2</span>, linestyle=<span class="string">"--"</span>, label=<span class="string">'love chy2'</span>)</span><br><span class="line">plt.text(<span class="number">-0.25</span>, <span class="number">0.5</span>, <span class="string">"chy is cute~"</span>, fontsize=<span class="number">12</span>)</span><br><span class="line">plt.title(<span class="string">"Learn to use matplotlib"</span>)</span><br><span class="line">plt.ylim(<span class="number">-1.2</span>, <span class="number">1.8</span>)</span><br><span class="line">plt.xlim(<span class="number">-1.5</span>, <span class="number">1.5</span>)</span><br><span class="line">plt.legend(loc=<span class="string">'lower right'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-<p>前面三句<code>import</code>没的说啦，就是为了载入绘图所用的包。<br><code>%matplotlib inline</code>这一句加上呢，是为了能在jupyter的环境下将图片可视化，否则只是显示有个图像句柄对象。<br>x，y是一一相对的列表，相当于函数定义域到值域的映射，<code>np.linspace(0, math.pi, 1000)</code>表示在0到pi之间均匀的生成1000个点。</p>
-<p>绘图部分，<code>plt.plot</code>函数用来绘制曲线，其中参数最主要的就是曲线(x,y)坐标列表。<code>color</code>用来指定颜色，<code>linewidth</code>用来指定绘制的线条宽度，<code>label</code>用来给曲线命名，由于绘制的曲线可能不止一条，可以用其区分，<code>linestyle</code>用来指定线型，默认是实线。</p>
-<p><code>plt.text</code>用来在指定坐标处添加文字，颜色以及大小都可选。</p>
-<p><code>plt.title</code>用来添加图片标题~</p>
-<p><code>plt.ylim</code>以及<code>plt.xlim</code>是用来限制展示的图像坐标轴范围，控制好范围能让图片展示更好看。</p>
-<p><code>plt.legend</code>就是用来加多条曲线的解释，具体解释会引用<code>plt.plot</code>中的label。</p>
-<p>学会了吗？</p>
-<p>效果图：</p>
-<p><img src="/images/draw_heart.png" alt="draw_heart" title="绘制效果"></p>
-
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="DRAFT"><a href="#DRAFT" class="headerlink" title="DRAFT"></a>DRAFT</h1><h1 id="DRAFT-1"><a href="#DRAFT-1" class="headerlink" title="DRAFT"></a>DRAFT</h1><h1 id="时间序列的类别"><a href="#时间序列的类别" class="headerlink" title="时间序列的类别"></a>时间序列的类别</h1><p>平稳是处理时间序列数据时遇到的最重要的概念之一，平稳的时间序列的性质不随观测时间的变化而变化。<br>平稳性可以说是时间序列分析的基础。平稳的通俗理解就是时间序列的一些行为不随时间改变， 所谓平稳过程就是其统计特性不随时间的平移而变化的过程。</p>
+<p>——即时间序列内含的规律和逻辑，要在被预测的未来时间段内能够延续下去。这样我们才能用历史信息去预测未来信息，类似机器学习中的训练集和测试集同分布</p>
+<h2 id="1-平稳序列"><a href="#1-平稳序列" class="headerlink" title="1 平稳序列"></a>1 平稳序列</h2><p>因此具有趋势或季节性的时间序列不是平稳时间序列——趋势和季节性使得时间序列在不同时段呈现不同性质。与它们相反，白噪声序列（white noise series）则是平稳的——不管观测的时间如何变化，它看起来都应该是一样的。大多数统计模型要求序列是平稳的，才能进行有效和精确的预测。</p>
+<h3 id="1-1-弱平稳序列"><a href="#1-1-弱平稳序列" class="headerlink" title="1.1 弱平稳序列"></a>1.1 弱平稳序列</h3><p>定义 <a href="http://www.math.pku.edu.cn/teachers/lidf/course/fts/ftsnotes/html/_ftsnotes/fts-tslin.html#tslin-intro" target="_blank" rel="noopener">http://www.math.pku.edu.cn/teachers/lidf/course/fts/ftsnotes/html/_ftsnotes/fts-tslin.html#tslin-intro</a></p>
+<p>白噪声是一种特殊的弱平稳序列</p>
+<p>股价本来是非平稳的，但是股价涨跌值是平稳的</p>
+<h3 id="1-2-强平稳序列"><a href="#1-2-强平稳序列" class="headerlink" title="1.2 强平稳序列"></a>1.2 强平稳序列</h3><h2 id="2-非平稳序列"><a href="#2-非平稳序列" class="headerlink" title="2 非平稳序列"></a>2 非平稳序列</h2><h1 id="如何判断是否平稳"><a href="#如何判断是否平稳" class="headerlink" title="如何判断是否平稳"></a>如何判断是否平稳</h1><p>非平稳序列到平稳序列的转换–》差分</p>
+<p>下一章，时序模型<br>baseline<br>ARIMA</p>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style: none; padding-left: 0; margin-left: 40px"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px; margin-left: -40px">1.</span><span style="display: inline-block; vertical-align: top; margin-left: 10px;">https://zhuanlan.zhihu.com/p/44872821<a href="#fnref:1" rev="footnote"> ↩</a></span></li></ol></div></div>
       
     </div>
     
@@ -373,9 +367,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
+            <a href="/tags/time-series/" rel="tag"># time series</a>
           
-            <a href="/tags/matplotlib/" rel="tag"># matplotlib</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -388,8 +382,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/07/三大特征抽取器的对比/" rel="next" title="三大特征抽取器的对比">
-                <i class="fa fa-chevron-left"></i> 三大特征抽取器的对比
+              <a href="/2019/12/08/时序分析预测-1-介绍/" rel="next" title="时序分析预测(1)--介绍">
+                <i class="fa fa-chevron-left"></i> 时序分析预测(1)--介绍
               </a>
             
           </div>
@@ -397,10 +391,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/08/时序分析预测-1-介绍/" rel="prev" title="时序分析预测(1)--介绍">
-                时序分析预测(1)--介绍 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -452,8 +442,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -515,6 +514,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DRAFT"><span class="nav-number">1.</span> <span class="nav-text">DRAFT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DRAFT-1"><span class="nav-number">2.</span> <span class="nav-text">DRAFT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时间序列的类别"><span class="nav-number">3.</span> <span class="nav-text">时间序列的类别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-平稳序列"><span class="nav-number">3.1.</span> <span class="nav-text">1 平稳序列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-弱平稳序列"><span class="nav-number">3.1.1.</span> <span class="nav-text">1.1 弱平稳序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-强平稳序列"><span class="nav-number">3.1.2.</span> <span class="nav-text">1.2 强平稳序列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-非平稳序列"><span class="nav-number">3.2.</span> <span class="nav-text">2 非平稳序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何判断是否平稳"><span class="nav-number">4.</span> <span class="nav-text">如何判断是否平稳</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

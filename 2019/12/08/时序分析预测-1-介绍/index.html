@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="python,time series,">
+  <meta name="keywords" content="time series,python,">
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="原本以为Time Series是个小问题，一个ARIMA就能搞定，就大概看些资料准备开始动手了。然而😂…现实是，越看越懵逼，单位根过程是啥？STL分解是啥？ARCH效应检验又是什么？自己还是too young，所以还是先找点资料看看，分几个章节边学边写，毕竟花语不好糊弄呢。 一、什么是时序分析？所谓时间序列，就是一系列随着时间而变化的观察值。很多金融数据都是时间序列数据，比如每日股价波动、每月">
-<meta name="keywords" content="python,time series">
+<meta name="keywords" content="time series,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="时序分析预测(1)--介绍">
 <meta property="og:url" content="http://yoursite.com/2019/12/08/时序分析预测-1-介绍/index.html">
 <meta property="og:site_name" content="Rookie Blogs">
 <meta property="og:description" content="原本以为Time Series是个小问题，一个ARIMA就能搞定，就大概看些资料准备开始动手了。然而😂…现实是，越看越懵逼，单位根过程是啥？STL分解是啥？ARCH效应检验又是什么？自己还是too young，所以还是先找点资料看看，分几个章节边学边写，毕竟花语不好糊弄呢。 一、什么是时序分析？所谓时间序列，就是一系列随着时间而变化的观察值。很多金融数据都是时间序列数据，比如每日股价波动、每月">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-12-08T12:59:18.976Z">
+<meta property="og:updated_time" content="2019-12-15T14:53:59.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="时序分析预测(1)--介绍">
 <meta name="twitter:description" content="原本以为Time Series是个小问题，一个ARIMA就能搞定，就大概看些资料准备开始动手了。然而😂…现实是，越看越懵逼，单位根过程是啥？STL分解是啥？ARCH效应检验又是什么？自己还是too young，所以还是先找点资料看看，分几个章节边学边写，毕竟花语不好糊弄呢。 一、什么是时序分析？所谓时间序列，就是一系列随着时间而变化的观察值。很多金融数据都是时间序列数据，比如每日股价波动、每月">
@@ -354,8 +354,9 @@
 <p>将这两种模型合并就是一个新的混合模型，叫做“动态回归模型”，结合了以上两种模型的特点：<br>$$HP_{t+1} = f(HP_{t}, 位置, 朝向, 面积, 户型, 楼层, 误差)$$</p>
 <p>解释模型非常有用,因为它包含了有关其他变量的信息,而不仅仅是要预测的变量的历史值。但是, 预测者可能选择时间序列模型而不是解释性或混合模型的原因有多种。首先,这一系统可能不被理解，因为特征选择通常具有主观性。其次,很难衡量各种预测因子的未来价值。第三, 有时只是关注预测会发生什么,而不关心为什么会发生。最后,时间序列模型预测更准确。</p>
 <p>在预测中模型的选择取决于可用的资源和数据、模型的准确性以及预测模型的使用方式<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。</p>
-<h1 id="二、时间序列的类别"><a href="#二、时间序列的类别" class="headerlink" title="二、时间序列的类别"></a>二、时间序列的类别</h1><h2 id="2-1-平稳序列"><a href="#2-1-平稳序列" class="headerlink" title="2.1 平稳序列"></a>2.1 平稳序列</h2><h3 id="2-1-1-强平稳序列"><a href="#2-1-1-强平稳序列" class="headerlink" title="2.1.1 强平稳序列"></a>2.1.1 强平稳序列</h3><h3 id="2-1-2-弱平稳序列"><a href="#2-1-2-弱平稳序列" class="headerlink" title="2.1.2 弱平稳序列"></a>2.1.2 弱平稳序列</h3><h2 id="2-2-非平稳序列"><a href="#2-2-非平稳序列" class="headerlink" title="2.2 非平稳序列"></a>2.2 非平稳序列</h2><h1 id="三、时序数据的获取"><a href="#三、时序数据的获取" class="headerlink" title="三、时序数据的获取"></a>三、时序数据的获取</h1><h2 id="3-1-航空公司乘客数据"><a href="#3-1-航空公司乘客数据" class="headerlink" title="3.1 航空公司乘客数据"></a>3.1 航空公司乘客数据</h2><p>航空乘客数据是典型的具有趋势性和季节性的数据，<a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/02/AirPassengers.csv" target="_blank" rel="noopener">下载地址</a>。</p>
-<h2 id="3-2-股票数据获取"><a href="#3-2-股票数据获取" class="headerlink" title="3.2 股票数据获取"></a>3.2 股票数据获取</h2><p>股票数据主要基于tushare库<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，股票交易数据获取方式：</p>
+<h1 id="二、时序数据的获取"><a href="#二、时序数据的获取" class="headerlink" title="二、时序数据的获取"></a>二、时序数据的获取</h1><p>为了方便之后的分析和实验，可以基于以下两类数据做分析。</p>
+<h2 id="2-1-航空公司乘客数据"><a href="#2-1-航空公司乘客数据" class="headerlink" title="2.1 航空公司乘客数据"></a>2.1 航空公司乘客数据</h2><p>航空乘客数据是典型的具有趋势性和季节性的数据，<a href="https://www.analyticsvidhya.com/wp-content/uploads/2016/02/AirPassengers.csv" target="_blank" rel="noopener">下载地址</a>。</p>
+<h2 id="2-2-股票数据获取"><a href="#2-2-股票数据获取" class="headerlink" title="2.2 股票数据获取"></a>2.2 股票数据获取</h2><p>股票数据主要基于tushare库<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup>，股票交易数据获取方式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tushare <span class="keyword">as</span> ts</span><br><span class="line"></span><br><span class="line">pro = ts.pro_api(token) <span class="comment">#token请找小季获取</span></span><br><span class="line">pangan_stock = pro.daily(ts_code=<span class="string">'000001.SZ'</span>, start_date=<span class="string">'20190106'</span>, end_date=<span class="string">'20190822'</span>)</span><br><span class="line">print(pangan_stock.head(<span class="number">5</span>))</span><br></pre></td></tr></table></figure>
 
 <p>其中<code>ts_code</code>就是关心的股票代码，<code>start_date</code>对应股票交易时间序列的开始时间，<code>end_date</code>对应结束时间。</p>
@@ -376,9 +377,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
-          
             <a href="/tags/time-series/" rel="tag"># time series</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -400,6 +401,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/15/时序分析预测-2-平稳序列/" rel="prev" title="时序分析预测(2)--平稳序列">
+                时序分析预测(2)--平稳序列 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -478,7 +483,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -533,7 +538,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、什么是时序分析？"><span class="nav-number">1.</span> <span class="nav-text">一、什么是时序分析？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-定量预测的条件"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 定量预测的条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-时序分析模型与解释模型的区别"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 时序分析模型与解释模型的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、时间序列的类别"><span class="nav-number">2.</span> <span class="nav-text">二、时间序列的类别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-平稳序列"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 平稳序列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-1-强平稳序列"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 强平稳序列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-2-弱平稳序列"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 弱平稳序列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-非平稳序列"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 非平稳序列</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、时序数据的获取"><span class="nav-number">3.</span> <span class="nav-text">三、时序数据的获取</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-航空公司乘客数据"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 航空公司乘客数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-股票数据获取"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 股票数据获取</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、什么是时序分析？"><span class="nav-number">1.</span> <span class="nav-text">一、什么是时序分析？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-定量预测的条件"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 定量预测的条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-时序分析模型与解释模型的区别"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 时序分析模型与解释模型的区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、时序数据的获取"><span class="nav-number">2.</span> <span class="nav-text">二、时序数据的获取</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-航空公司乘客数据"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 航空公司乘客数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-股票数据获取"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 股票数据获取</span></a></li></ol></li></ol></div>
             
 
           </div>
