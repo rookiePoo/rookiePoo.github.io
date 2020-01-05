@@ -346,15 +346,47 @@
       
         
           
-            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="DRAFT"><a href="#DRAFT" class="headerlink" title="DRAFT"></a>DRAFT</h1><h1 id="DRAFT-1"><a href="#DRAFT-1" class="headerlink" title="DRAFT"></a>DRAFT</h1><h1 id="时间序列的类别"><a href="#时间序列的类别" class="headerlink" title="时间序列的类别"></a>时间序列的类别</h1><p>平稳是处理时间序列数据时遇到的最重要的概念之一，平稳的时间序列的性质不随观测时间的变化而变化。<br>平稳性可以说是时间序列分析的基础。平稳的通俗理解就是时间序列的一些行为不随时间改变， 所谓平稳过程就是其统计特性不随时间的平移而变化的过程。</p>
-<p>——即时间序列内含的规律和逻辑，要在被预测的未来时间段内能够延续下去。这样我们才能用历史信息去预测未来信息，类似机器学习中的训练集和测试集同分布</p>
-<h2 id="1-平稳序列"><a href="#1-平稳序列" class="headerlink" title="1 平稳序列"></a>1 平稳序列</h2><p>因此具有趋势或季节性的时间序列不是平稳时间序列——趋势和季节性使得时间序列在不同时段呈现不同性质。与它们相反，白噪声序列（white noise series）则是平稳的——不管观测的时间如何变化，它看起来都应该是一样的。大多数统计模型要求序列是平稳的，才能进行有效和精确的预测。</p>
-<h3 id="1-1-弱平稳序列"><a href="#1-1-弱平稳序列" class="headerlink" title="1.1 弱平稳序列"></a>1.1 弱平稳序列</h3><p>定义 <a href="http://www.math.pku.edu.cn/teachers/lidf/course/fts/ftsnotes/html/_ftsnotes/fts-tslin.html#tslin-intro" target="_blank" rel="noopener">http://www.math.pku.edu.cn/teachers/lidf/course/fts/ftsnotes/html/_ftsnotes/fts-tslin.html#tslin-intro</a></p>
-<p>白噪声是一种特殊的弱平稳序列</p>
+            <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/hint.css/2.4.1/hint.min.css"><h1 id="DRAFT"><a href="#DRAFT" class="headerlink" title="DRAFT"></a>DRAFT</h1><h1 id="时间序列的特性"><a href="#时间序列的特性" class="headerlink" title="时间序列的特性"></a>时间序列的特性</h1><p>时间序列往往是以下几类变化形式的叠加和耦合<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。</p>
+<ul>
+<li><strong>趋势变动：</strong> 在长时期内按某种规则稳定地呈现出来的持续向上或向下或保持在某一水平。</li>
+<li><strong>循环波动：</strong> 时间序列上呈现出的非固定长度的周期性变动。循环波动的周期可能会持续一段时间，与趋势不同，它不是持续朝着单一方向的变动，而是涨落相同的交替波动。可视作时间序列中的周期项。</li>
+<li><strong>季节变动：</strong> 季节性的周期波动。诸如气候条件、生产条件、节假日或人们的风俗习惯等各种因素的影响。</li>
+<li><strong>随机变动：</strong> 是许多不可控的偶然因素共同作用的结果，致使时间序列产生一种波浪形或震荡式的扰动。</li>
+</ul>
+<p>正是由于这些波动成分的随机组合才生成了各种各样的序列，根据组合后数据观测出的特点，将时间序列分为平稳序列和非平稳序列两种。</p>
+<h2 id="1-平稳序列"><a href="#1-平稳序列" class="headerlink" title="1 平稳序列"></a>1 平稳序列</h2><p>平稳性可以说是时间序列分析的基础。平稳的通俗理解就是时间序列的一些行为不随时间改变， 所谓平稳过程就是其统计特性不随时间的平移而变化的过程。大多数统计模型要求序列是平稳的，才能进行有效和精确的预测。即使不平稳，也需要先转换成平稳序列进行预测，然后基于平稳结果，再转换回来。<br>和直观上理解的平稳有些差异，比如下图的白噪声序列，就是最简单的稳定过程：<br><img src="/images/white_noise.png" alt="白噪声序列" title="White Noise"></p>
+<p>看似波动很剧烈，但是它满足弱平稳序列定义的三大要求：</p>
+<!--
+1. $$E(Y_t) = \mu $$
+2. $$Var(Y_t) = \sigma^2 $$
+3. $$Corr(Y_t, Y_{t-k}) = \gamma_k, k = 1,2,... $$
+
+公式若无法正常显示见下图：
+-->
+<img src="/images/definition_weak_station.png" width="50%" height="50%" align="center/">
+
+<p>看起来挺不顺眼的是不，其实就是对应了观测序列平均值不变、方差不变以及协方差也不随时间改变，而仅与时间差k相关这三个条件。恰好，白噪声过程就是这样一个服从均值为0、方差为常数的正态分布，因此它是平稳序列。一般来说，在时序分析中提到的平稳序列都泛指弱平稳。</p>
+<h3 id="1-1-强平稳序列"><a href="#1-1-强平稳序列" class="headerlink" title="1.1 强平稳序列"></a>1.1 强平稳序列</h3><p>有弱平稳就有强平稳，它们之间不是互相包含的关系，并不是说强平稳的条件一定比弱平稳严格，而是可以相互转化。<br>强平稳过程的要求十分严格，其定义为：</p>
+<blockquote>
+<p>对于所有可能的n，所有可能的t<sub>1</sub>, t<sub>2</sub>, …, t<sub>n</sub>和所有可能的k，当Z<sub>t<sub>1</sub></sub>, Z<sub>t<sub>2</sub></sub>, …, Z<sub>t<sub>n</sub></sub>的联合分布与Z<sub>t<sub>1</sub>-k</sub>, Z<sub>t<sub>2</sub>-k</sub>, …, Z<sub>t<sub>n</sub>-k</sub>相同时，称其强平稳。</p>
+</blockquote>
+<p>通俗来说，就是时间序列的联合分布随着时间变化严格保持不变。可以看出，强平稳的条件太强，证明一个时间序列是强平稳的一般很难。当分布很复杂时，不仅很难比较所有可能性，也可能很难写出其联合分布函数。实际上，对于数据，我们也只能估算出它们的均值和二阶矩，而没法知道它的真实分布<sup id="fnref:3"><a href="#fn:3" rel="footnote">3</a></sup>。</p>
+<p>强平稳和弱平稳之间的区别是：</p>
+<ul>
+<li>强平稳是事实上的平稳（同分布），分布平移不变</li>
+<li>弱平稳是统计量在观测意义上的平稳（均值、方差），相关系数平移不变</li>
+</ul>
+<p>强平稳和弱平稳在一定条件下是可以相互转化的，可以参考<a href="https://www.zhihu.com/question/21982358" target="_blank" rel="noopener">姚岑卓的回答</a>，比较理论，不懂也没关系。</p>
+<h3 id="1-2-弱平稳序列"><a href="#1-2-弱平稳序列" class="headerlink" title="1.2 弱平稳序列"></a>1.2 弱平稳序列</h3><p>满足弱平稳序列个要求的的时间序列即为弱平稳序列。之后提到的平稳序列在未注明的情况下都为弱平稳。</p>
+<h2 id="2-非平稳序列"><a href="#2-非平稳序列" class="headerlink" title="2 非平稳序列"></a>2 非平稳序列</h2><p>平稳的时间序列的性质不随观测时间的变化而变化，因此具有趋势或季节性的时间序列不是平稳时间序列——趋势和季节性使得时间序列在不同时段呈现不同性质。一般而言，一个平稳的时间序列从长期来看不存在可预测的特征。它的时间曲线图反映出这个序列近似于水平（尽管可能存在一些周期性的变化）并保持固定的方差。<br><img src="/images/stationary.png" alt="图中哪些时间序列是平稳的" title="图中哪些时间序列是平稳的？"></p>
+<p>判断一下上图中哪些序列是平稳的：<br>(a) 连续292天的谷歌股价；（b）连续292天谷歌股价的每日变化量；（c）美国各年的罢工总次数；（d）美国独立家庭住宅的每月价格；（e）按不变美元计算的美国的鸡蛋价格；（e）每月在澳大利亚维多利亚州被屠宰的猪的数量；（g）每年在加拿大西北的麦肯齐河停留的猞猁数量；（h）澳大利亚每月啤酒产量；（i）澳大利亚每月发电量。</p>
+<p>显然存在季节性的序列（d)（h）和（i）可以被排除。存在趋势的序列（a）（c）（e）（f）和（i）也应该被排除，除此之外，序列（i）的方差随时间增大，也不符合平稳时间序列的性质。用上述方法排除后，剩下的（b）和（g）是平稳时间序列。</p>
+<p>序列（g）的循环变化让它第一眼看上去不太平稳，但是这种变化其实是不定期的——当猞猁的数量超过食物承载的上限时，它们会停止繁殖从而使得数量回落到非常低的水平，之后食物来源的再生使得猞猁数量重新增长，周而复始。从长期来看，这种循环的时间点是不能预测的，因此序列（g）是平稳的<sup id="fnref:4"><a href="#fn:4" rel="footnote">4</a></sup>。</p>
 <p>股价本来是非平稳的，但是股价涨跌值是平稳的</p>
-<h3 id="1-2-强平稳序列"><a href="#1-2-强平稳序列" class="headerlink" title="1.2 强平稳序列"></a>1.2 强平稳序列</h3><h2 id="2-非平稳序列"><a href="#2-非平稳序列" class="headerlink" title="2 非平稳序列"></a>2 非平稳序列</h2><h1 id="如何判断是否平稳"><a href="#如何判断是否平稳" class="headerlink" title="如何判断是否平稳"></a>如何判断是否平稳</h1><p>非平稳序列到平稳序列的转换–》差分</p>
+<h1 id="如何判断是否平稳"><a href="#如何判断是否平稳" class="headerlink" title="如何判断是否平稳"></a>如何判断是否平稳</h1><p>平稳性意味着变量的条件概率分布不随时间变化而变化——即时间序列内含的规律和逻辑，要在被预测的未来时间段内能够延续下去。这样我们才能用历史信息去预测未来信息。否则，历史数据得到的统计性质对预测未来毫无意义。</p>
+<p>非平稳序列到平稳序列的转换–》差分</p>
 <p>下一章，时序模型<br>baseline<br>ARIMA</p>
-<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">https://zhuanlan.zhihu.com/p/44872821</span><a href="#fnref:1" rev="footnote"> ↩</a></li></ol></div></div>
+<div id="footnotes"><hr><div id="footnotelist"><ol style="list-style:none; padding-left: 0;"><li id="fn:1"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">1.</span><span style="display: inline-block; vertical-align: top;">https://zhuanlan.zhihu.com/p/35069699</span><a href="#fnref:1" rev="footnote"> ↩</a></li><li id="fn:2"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">2.</span><span style="display: inline-block; vertical-align: top;">https://zhuanlan.zhihu.com/p/44872821</span><a href="#fnref:2" rev="footnote"> ↩</a></li><li id="fn:3"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">3.</span><span style="display: inline-block; vertical-align: top;">https://www.zhihu.com/question/21982358</span><a href="#fnref:3" rev="footnote"> ↩</a></li><li id="fn:4"><span style="display: inline-block; vertical-align: top; padding-right: 10px;">4.</span><span style="display: inline-block; vertical-align: top;">https://otexts.com/fppcn/stationarity.html</span><a href="#fnref:4" rev="footnote"> ↩</a></li></ol></div></div>
           
         
       
@@ -1424,7 +1456,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
